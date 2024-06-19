@@ -7,9 +7,8 @@ DISCORD_BOT_TOKEN = 'YOUR_DISCORD_BOT_TOKEN'
 
 # GitHub repository details
 GITHUB_API_URL = 'https://api.github.com/repos/{owner}/{repo}/releases/latest'
-GITHUB_OWNER = 'your-github-username'
-GITHUB_REPO = 'your-repo-name'
-GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN'  # Optional: Use a personal access token for higher rate limits
+GITHUB_OWNER = 'Jovs12351'
+GITHUB_REPO = 'Discord-bot'
 
 # Bot setup
 intents = discord.Intents.default()
@@ -20,7 +19,7 @@ async def on_ready():
     print(f'Logged in as {bot.user.name}')
     check_latest_release.start()  # Start the task to check for the latest release
 
-@tasks.loop(hours=1)  # Check every hour
+@tasks.loop(minute=1)  # Check every hour
 async def check_latest_release():
     url = GITHUB_API_URL.format(owner=GITHUB_OWNER, repo=GITHUB_REPO)
     headers = {
